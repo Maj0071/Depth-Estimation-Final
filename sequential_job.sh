@@ -14,12 +14,15 @@ module load python/3.12
 # Move to the directory where the job was submitted
 #
 cd $SLURM_SUBMIT_DIR
-cp myscript.sh message.in $TMPDIR
+#cp myscript.sh message.in $TMPDIR
+cp myscript.sh run_fourier.py input.png message.in $TMPDIR
 cd $TMPDIR
 #
 # Run sequential job
 #
+echo "Running job at $(date)"
 /usr/bin/time ./myscript.sh
+echo "Finished job at $(date)"
 #
 # Now, copy data (or move) back once the simulation has completed
 #
